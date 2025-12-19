@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="EvoOps - Evolution in Operations">
+    <title>EvoOps - Project Starter</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        main {
+            flex: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 1rem;
+            width: 100%;
+        }
+
+        .content-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .content-section h2 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .content-section p {
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+            color: #555;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 6px;
+            border-left: 4px solid #667eea;
+            transition: transform 0.2s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .feature-card h3 {
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-card p {
+            font-size: 0.95rem;
+            color: #666;
+        }
+
+        footer {
+            background: #2d3748;
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+
+        footer h3 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .contact-item a {
+            color: #667eea;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .contact-item a:hover {
+            color: #764ba2;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+            main {
+                padding: 2rem 1rem;
+            }
+
+            .content-section {
+                padding: 1.5rem;
+            }
+
+            .content-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 1.5rem 1rem;
+            }
+
+            header h1 {
+                font-size: 1.75rem;
+            }
+
+            .content-section {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>EvoOps</h1>
+        <p>Evolution in Operations - Building the Future</p>
+    </header>
+
+    <main>
+        <div class="content-section">
+            <h2>About This Project</h2>
+            <p>
+                Welcome to EvoOps, a modern project starter template designed to help you build
+                scalable and maintainable applications. This template provides a solid foundation
+                with clean code structure and best practices built in.
+            </p>
+            <p>
+                Our mission is to streamline development workflows and enable teams to focus on
+                delivering value rather than setting up infrastructure. With EvoOps, you get a
+                production-ready starting point for your next big idea.
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h2>Key Features</h2>
+            <div class="features">
+                <div class="feature-card">
+                    <h3>Responsive Design</h3>
+                    <p>Mobile-first approach ensuring your application looks great on all devices and screen sizes.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Modern Stack</h3>
+                    <p>Built with the latest web technologies and best practices for optimal performance.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Clean Code</h3>
+                    <p>Well-structured, maintainable code that follows industry standards and conventions.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Fast Setup</h3>
+                    <p>Get started quickly with minimal configuration required to begin development.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <h3>Contact Information</h3>
+        <div class="contact-info">
+            <div class="contact-item">
+                <span>Email:</span>
+                <a href="mailto:contact@evoops.dev">contact@evoops.dev</a>
+            </div>
+            <div class="contact-item">
+                <span>GitHub:</span>
+                <a href="https://github.com/admin-sawangtech/evoops" target="_blank">admin-sawangtech/evoops</a>
+            </div>
+            <div class="contact-item">
+                <span>Web:</span>
+                <a href="https://evoops.dev" target="_blank">www.evoops.dev</a>
+            </div>
+        </div>
+        <p style="margin-top: 2rem; opacity: 0.8; font-size: 0.9rem;">
+            &copy; 2025 EvoOps. All rights reserved.
+        </p>
+    </footer>
+</body>
+</html>
