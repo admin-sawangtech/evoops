@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EvoOps</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            padding: 40px;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 2.5rem;
+        }
+
+        p {
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        label {
+            color: #555;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        input {
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .error {
+            color: #e74c3c;
+            font-size: 0.85rem;
+            display: none;
+        }
+
+        .error.active {
+            display: block;
+        }
+
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .success-message {
+            background: #2ecc71;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            display: none;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .success-message.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>EvoOps</h1>
+        <p>Welcome! Please login to continue.</p>
+
+        <form class="login-form" id="loginForm">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email">
+                <span class="error" id="emailError">Please enter a valid email address</span>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password">
+                <span class="error" id="passwordError">Password must be at least 8 characters and contain special characters</span>
+            </div>
+
+            <button type="submit">Login</button>
+        </form>
+
+        <div class="success-message" id="successMessage">
+            Login successful!
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('loginForm');
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        const emailError = document.getElementById('emailError');
+        const passwordError = document.getElementById('passwordError');
+        const successMessage = document.getElementById('successMessage');
+
+        // Email validation regex - supports special characters
+        const emailRegex = /^[a-zA-Z0-9._+\-!#$%&'*\/=?^_`{|}~]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+        // Password validation regex - requires at least 8 characters and at least one special character
+        const passwordRegex = /^(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{8,}$/;
+
+        emailInput.addEventListener('blur', function() {
+            validateEmail();
+        });
+
+        passwordInput.addEventListener('blur', function() {
+            validatePassword();
+        });
+
+        emailInput.addEventListener('input', function() {
+            if (emailError.classList.contains('active')) {
+                validateEmail();
+            }
+        });
+
+        passwordInput.addEventListener('input', function() {
+            if (passwordError.classList.contains('active')) {
+                validatePassword();
+            }
+        });
+
+        function validateEmail() {
+            const email = emailInput.value.trim();
+            if (email === '' || !emailRegex.test(email)) {
+                emailError.classList.add('active');
+                emailInput.style.borderColor = '#e74c3c';
+                return false;
+            } else {
+                emailError.classList.remove('active');
+                emailInput.style.borderColor = '#2ecc71';
+                return true;
+            }
+        }
+
+        function validatePassword() {
+            const password = passwordInput.value;
+            if (password === '' || !passwordRegex.test(password)) {
+                passwordError.classList.add('active');
+                passwordInput.style.borderColor = '#e74c3c';
+                return false;
+            } else {
+                passwordError.classList.remove('active');
+                passwordInput.style.borderColor = '#2ecc71';
+                return true;
+            }
+        }
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const isEmailValid = validateEmail();
+            const isPasswordValid = validatePassword();
+
+            if (isEmailValid && isPasswordValid) {
+                successMessage.classList.add('active');
+                setTimeout(() => {
+                    form.reset();
+                    emailInput.style.borderColor = '#e0e0e0';
+                    passwordInput.style.borderColor = '#e0e0e0';
+                    successMessage.classList.remove('active');
+                }, 2000);
+            }
+        });
+    </script>
+</body>
+</html>
